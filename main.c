@@ -14,35 +14,7 @@ int main(void) {
 	srand(time(NULL));
   FILE *fp = fopen("result.dat", "w");
 
-	pid_t pid;
 
-	for (int i=0; i<4; i++) {
-		pid = fork();
-		
-		if (pid == 0) {
-			for (int i=0; i<10000; i++) {
-				number[rand()%100]++;
-			}
-
-			for (int i=0; i<100; i++) {
-				sum += number[i];
-				fputs("good ", fp);
-			}
-
-			fputs("sum \n", fp);
-			printf("End of child process\n");
-		}
-
-		else if (pid > 0) {
-			printf("Parent status\n");
-			wait(NULL);
-		}
-		else {
-			printf("Fork error\n");
-			exit(0);
-		}
-		
-	}
 
 
 
